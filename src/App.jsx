@@ -6,10 +6,10 @@ import { useState } from "react";
 import { Row, Col } from "antd";
 function App() {
   const [userInput, setUserInput] = useState({
-    initialInvestment: null,
-    annualInvestment: null,
-    expectedReturn: null,
-    duration: null,
+    initialInvestment: 0,
+    annualInvestment: 0,
+    expectedReturn: 0,
+    duration: 0,
   });
   const inputValid = userInput.duration >= 1;
   function handleChange(inputIdentifier, newValue) {
@@ -22,10 +22,10 @@ function App() {
   }
   const resetInputs = () => {
     setUserInput({
-      initialInvestment: null,
-      annualInvestment: null,
-      expectedReturn: null,
-      duration: null,
+      initialInvestment: 0,
+      annualInvestment: 0,
+      expectedReturn: 0,
+      duration: 0,
     });
   };
   return (
