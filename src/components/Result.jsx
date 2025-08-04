@@ -1,15 +1,12 @@
 import React from "react";
-import { Table, Form, Input, Button } from "antd";
+import { Table } from "antd";
 import { formatter } from "../util/investment";
 
 function Result({ results, initialInvestment }) {
   const dataSource = results.map((yearData) => {
-    const totalInterest =
-      yearData.valueEndOfYear -
-      yearData.annualInvestment * yearData.year -
-      initialInvestment;
     const totalInvestedCapital =
-      yearData.annualInvestment * yearData.year + initialInvestment;
+      initialInvestment + yearData.annualInvestment * yearData.year;
+    const totalInterest = yearData.valueEndOfYear - totalInvestedCapital;
 
     return {
       key: yearData.year,
@@ -50,18 +47,16 @@ function Result({ results, initialInvestment }) {
   ];
 
   return (
-    <Table
-      bordered
-      dataSource={dataSource}
-      columns={columns}
-      pagination={false}
-      scroll={{ x: true }}
-      locale={{ emptyText: "No data" }}
-      style={{
-        padding: "20px",
-        backgroundColor: "#2d8e",
-      }}
-    />
+    <div style={{ padding: "20px", backgroundColor: "#2dd88e" }}>
+      <Table
+        bordered
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+        scroll={{ x: true }}
+        locale={{ emptyText: "No data" }}
+      />
+    </div>
   );
 }
 
